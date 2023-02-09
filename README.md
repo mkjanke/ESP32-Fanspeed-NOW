@@ -8,6 +8,8 @@ Allows for limited control of fan parameters via commands sent via ESP-NOW.
 
 All ESP-NOW communication is to and from broadcast addresses
 
+Similar in functionality to https://github.com/mkjanke/ESP32-C3-Fanspeed
+
 Uses ArduinoJson and OneWireNG libraries.
 
 ## Output 
@@ -24,6 +26,7 @@ Uses ArduinoJson and OneWireNG libraries.
 ### Command Packet
 
 Format:
+
 {"D" : "ESP-Fanspeed", "CMD" : "SET", "Param" : "Relay", "Value" : "1" }
 
 Valid values for 'Param' are "Relay", "Override", "Start Temp", "Max Temp", "Low Speed" - corresponding to equivalient values in settings.h
