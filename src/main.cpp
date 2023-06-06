@@ -101,6 +101,7 @@ void readSensors(void* parameter) {
     digitalWrite(LED_OUT, HIGH);
 
     if (sensors.readFahrenheit()) {
+      fan.setFanSpeed((int)sensors.temperatureA, (int)sensors.temperatureB);
       doc.clear();
       doc["D"] = DEVICE_NAME;
       doc["Temperature A"] = (double)((int)(sensors.temperatureA * 10 + .5))/10.0 ;
@@ -108,17 +109,17 @@ void readSensors(void* parameter) {
       doc["Reads"] = sensors.readCount;
       doc["Errors"] = sensors.errorCount;
       espNowSend((JsonDocument&)doc);
-      fan.setFanSpeed((int)sensors.temperatureA, (int)sensors.temperatureB);
     }
     else {
       // bleIF.updateStatus("read failed");
     }
+    dumpFanStatus();
     digitalWrite(LED_OUT, LOW);
     uptime();
   }
 }
 
-// Output sensor status to terminal
+// Output sensor status to ESP-NOW
 void dumpFanStatus() {
   StaticJsonDocument<ESP_BUFFER_SIZE> doc;
   doc.clear();
