@@ -1,7 +1,6 @@
 #ifndef DS18B20_H
 #define DS18B20_H
 
-// #include "log.h"
 #include "settings.h"
 #include "OneWireNg_CurrentPlatform.h"
 #include "drivers/DSTherm.h"

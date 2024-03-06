@@ -2,7 +2,7 @@
 #define FAN_H
 
 #include "driver/gpio.h"     // gpio functions
-#include "esp32-hal-ledc.h"  // lcdSetup()
+#include "esp32-hal-ledc.h"  // ledcSetup()
 #include "settings.h"
 
 class PWMFan {

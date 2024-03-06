@@ -33,16 +33,6 @@
 #define LED_OUT                 7
 
 // Sensor type, pins and config
-// Uncomment either DHT section or DS18B20 Section, not both
-
-// ---- DHT section
-// #define SENSORPIN_A  18
-// #define SENSORPIN_B  19
-
-// #define SENSORTYPE DHT11            // Sensor type DHT 11
-// #define DHT11SENSOR
-// ---- End DHT Section
-
 // ---- DS18B20 Setion
 static const uint8_t DS18B20{18};      /** DS18B20 type sensor */
 #define SENSORTYPE DS18B20

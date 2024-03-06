@@ -7,7 +7,6 @@
 uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 esp_now_peer_info_t peerInfo;
 
-// TaskHandle_t xhandleSerialWriteHandle = NULL;
 TaskHandle_t xhandleEspNowWriteHandle = NULL;
 TaskHandle_t xhandleHeartbeat = NULL;
 
@@ -60,7 +59,6 @@ void espnowHeartbeat(void *parameter) {
     doc["R"] = uxTaskGetStackHighWaterMark(xhandleHeartbeat);
     doc["W"] = uxTaskGetStackHighWaterMark(xhandleEspNowWriteHandle);
     doc["H"] = esp_get_minimum_free_heap_size();
-    // doc["Q"] = uxQueueMessagesWaiting(send_to_Serial_queue);
 
     serializeJson(doc, jsonMessage);  // Convert JsonDoc to JSON string
     if (!espNowSend(jsonMessage)) {

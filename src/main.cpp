@@ -4,7 +4,7 @@
 #include <espnow.h>
 
 #include "fan.h"
-#include "sensor.h"
+#include "ds18b20.h"
 #include "settings.h"
 
 PWMFan fan;
@@ -15,7 +15,6 @@ void dumpFanStatus();  // Dump Sensor status to terminal window
 void uptime();
 void readSensors(void*);
 
-TaskHandle_t xcheckWiFiHandle = NULL;
 TaskHandle_t xreadSensorsHandle = NULL;
 
 void setup() {
@@ -31,9 +30,6 @@ void setup() {
   if (!initEspNow()) {
     return;
   };
-
-  // // Initialize BlueTooth
-  // bleIF.begin();
 
   // Initialize fan and temperature sensors
   fan.begin();
@@ -111,7 +107,7 @@ void readSensors(void* parameter) {
       espNowSend((JsonDocument&)doc);
     }
     else {
-      // bleIF.updateStatus("read failed");
+      // 
     }
     dumpFanStatus();
     digitalWrite(LED_OUT, LOW);
